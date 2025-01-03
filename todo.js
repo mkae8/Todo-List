@@ -1,22 +1,15 @@
-// Elementuudiig avah
-
 const boards = document.querySelectorAll(".board");
 const todoElement = document.querySelector("#todo");
 const inProgressElement = document.querySelector("#inprogress");
 const stuckElement = document.querySelector("#stuck");
 const doneElement = document.querySelector("#done");
 
-// Unique ID
-
 const uid = () => {
   return Date.now().toString(36) + Math.random().toString(36);
 };
 
-// Card
-
 const CardElement = (props) => {
   const { id, title, description, priority, status } = props;
-
   return `
     <div class="card" draggable="true" data-id=${id}>
       ${
@@ -35,7 +28,7 @@ const CardElement = (props) => {
         <div class="done" onclick="remove('${id}')">
           <i class="fa-solid fa-xmark"></i>
         </div>
-        <div class="done" onclick="">
+        <div class="done" onclick="edit('${id}')">
           <i class="fa-solid fa-pen-to-square"></i>
         </div>
       </div>
@@ -133,6 +126,17 @@ const render = () => {
 const setData = (arr) => {
   data = arr;
   render();
+};
+
+const edit = (id) => {
+  const item = data.find((item) => item.id === id);
+  document.querySelector("#title").value = item.title;
+  document.querySelector("#description").value = item.description;
+  document.querySelector("#status").value = item.status;
+  document.querySelector("#priority").value = item.priority;
+  document.querySelector(".backdrop").classList.add("active");
+
+  remove(id);
 };
 
 const remove = (id) => {

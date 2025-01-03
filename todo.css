@@ -6,9 +6,9 @@
 }
 
 body {
-  background-image: url("https://c1.wallpaperflare.com/path/565/385/156/sunset-brook-green-meadow-june-df867360f0bed19da26bbb3838498c8f.jpg");
+  background-image: url("uulus.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
 }
 
 i {
